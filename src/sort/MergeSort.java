@@ -17,7 +17,7 @@ public class MergeSort {
 
     private static int[] sort(int[] sortArr) {
         if (sortArr.length <= 1) return sortArr;
-        
+
         int[] mergeLeft = sort(Arrays.copyOfRange(sortArr, 0, sortArr.length/2));
         int[] mergeRight = sort(Arrays.copyOfRange(sortArr, sortArr.length/2, sortArr.length));
 
@@ -26,9 +26,8 @@ public class MergeSort {
         for(int i = 0; i < resultArr.length; i++) {
             if(l >= mergeLeft.length) {
                 resultArr[i] = mergeRight[r++];
-            } else if(r >= mergeRight.length) {
-                resultArr[i] = mergeLeft[l++];
-            } else if(mergeLeft[l] < mergeRight[r]) {
+            } else if(r >= mergeRight.length
+                    || mergeLeft[l] < mergeRight[r]) {
                 resultArr[i] = mergeLeft[l++];
             } else {
                 resultArr[i] = mergeRight[r++];
