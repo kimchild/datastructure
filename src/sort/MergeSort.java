@@ -17,18 +17,9 @@ public class MergeSort {
 
     private static int[] sort(int[] sortArr) {
         if (sortArr.length <= 1) return sortArr;
-
-        int length = sortArr.length/2;
-        int leftLength = length/2;
-        int rightStart = length/2;
-        //홀수값이면 왼쪽 정렬값이 1을 더 가지게 함
-        if (length % 2 == 1) {
-            leftLength = length/2+1;
-            rightStart = leftLength;
-        }
-
-        int[] mergeLeft = sort(Arrays.copyOfRange(sortArr, 0, leftLength));
-        int[] mergeRight = sort(Arrays.copyOfRange(sortArr, rightStart, sortArr.length));
+        
+        int[] mergeLeft = sort(Arrays.copyOfRange(sortArr, 0, sortArr.length/2));
+        int[] mergeRight = sort(Arrays.copyOfRange(sortArr, sortArr.length/2, sortArr.length));
 
         int[] resultArr = new int[mergeLeft.length+mergeRight.length];
         int l = 0, r = 0;
