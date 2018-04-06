@@ -10,7 +10,7 @@ public class test1 {
 
     public static void main(String[] args) {
 
-        /*/
+        /**/
         int start = 1;
         int end = 10;
         System.out.println(    (start+end)*end/2    );
@@ -25,6 +25,7 @@ public class test1 {
         System.out.println(sum);
         /**/
 
+        /*/
         ArrayList numbers = new ArrayList();
         System.out.println(numbers.toString());
         numbers.addLast(10);
@@ -87,7 +88,7 @@ public class test1 {
         }
 
         System.out.println(numbers);
-
+        /**/
 
 
     }

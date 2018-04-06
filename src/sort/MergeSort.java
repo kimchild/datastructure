@@ -22,15 +22,15 @@ public class MergeSort {
         int[] mergeRight = sort(Arrays.copyOfRange(sortArr, sortArr.length/2, sortArr.length));
 
         int[] resultArr = new int[mergeLeft.length+mergeRight.length];
-        int l = 0, r = 0;
+        int lt = 0, rt = 0;
         for(int i = 0; i < resultArr.length; i++) {
-            if(l >= mergeLeft.length) {
-                resultArr[i] = mergeRight[r++];
-            } else if(r >= mergeRight.length
-                    || mergeLeft[l] < mergeRight[r]) {
-                resultArr[i] = mergeLeft[l++];
+            if(lt >= mergeLeft.length) {
+                resultArr[i] = mergeRight[rt++];
+            } else if(rt >= mergeRight.length
+                    || mergeLeft[lt] < mergeRight[rt]) {
+                resultArr[i] = mergeLeft[lt++];
             } else {
-                resultArr[i] = mergeRight[r++];
+                resultArr[i] = mergeRight[rt++];
             }
         }
 
