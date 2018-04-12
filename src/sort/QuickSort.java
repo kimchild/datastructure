@@ -1,6 +1,5 @@
 package sort;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,9 +17,15 @@ public class QuickSort {
         for(int sort : sortArr)
             resultArr.add(sort);
         System.out.println(    sort(resultArr)    );
-        int i = 0;
     }
 
+    /**
+     * QuickSort 잘못 이해했다. left, right랑 바꾸거나 pivot이랑 바꿔야 하고,
+     * index 위치에 따라 바뀌는 규약도 있다.
+     * 이제 그래픽을 보면 좀 이해가 될거같다.
+     * @param sortArr
+     * @return List<Integer>
+     */
     private static List<Integer> sort(List<Integer> sortArr) {
         if(sortArr.size() <= 1) return sortArr;
 
