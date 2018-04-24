@@ -1,7 +1,6 @@
 package sort;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * QuickSort
@@ -13,57 +12,38 @@ public class QuickSort {
     public static void main(String[] args) {
 
         int[] sortArr = {3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48};
-        LinkedList<Integer> resultArr = new LinkedList<>();
-        for(int sort : sortArr)
-            resultArr.add(sort);
-        System.out.println(    sort(resultArr)    );
+        System.out.println(Arrays.toString(sort(sortArr, 0, sortArr.length-1)));
     }
 
     /**
-     * QuickSort 잘못 이해했다. left, right랑 바꾸거나 pivot이랑 바꿔야 하고,
-     * index 위치에 따라 바뀌는 규약도 있다.
-     * 이제 그래픽을 보면 좀 이해가 될거같다.
-     * @param sortArr
-     * @return List<Integer>
+     * 이해가 오래걸려서 위키로 소스코드를 짜봄.
+     * 코드를 보면서 좀더 이해해보고 직접 짜봐야겠다.
+     * @return int[]
      */
-    private static List<Integer> sort(List<Integer> sortArr) {
-        if(sortArr.size() <= 1) return sortArr;
+    private static int[] sort(int[] arr, int left, int right) {
+        int i, j, pivot, tmp;
 
-        int pivot = sortArr.size()-1;
-        int left = 0;
-        int right = pivot-1;
-
-        while(left < right) {
-
-            if(sortArr.get(left) > sortArr.get(pivot)) {
-                int temp = sortArr.get(left);
-                sortArr.add(pivot+1, temp);
-                sortArr.remove(left--);
-                pivot--;
+        if(left < right) {
+            i = left;
+            j = right;
+            pivot = arr[left];
+            //분할
+            while(i < j) {
+                while(arr[j] > pivot) j--;
+                while(i < j && arr[i] <= pivot) i++;
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
             }
-            if(sortArr.get(right) > sortArr.get(pivot)) {
-                int temp = sortArr.get(right);
-                sortArr.remove(right++);
-                sortArr.add(pivot, temp);
-                pivot--;
-            }
-            left++;
-            right--;
+            arr[left] = arr[i];
+            arr[i] = pivot;
 
-            if(left >= right
-                    && sortArr.get(left) > sortArr.get(pivot)) {
-                int temp = sortArr.get(left);
-                sortArr.set(left, sortArr.get(pivot));
-                sortArr.set(pivot, temp);
-            }
-
+            //정렬
+            sort(arr, left, i-1);
+            sort(arr, i+1, right);
         }
 
-
-        sort(sortArr.subList(0, pivot));
-        sort(sortArr.subList(pivot+1, sortArr.size()));
-
-        return sortArr;
+        return arr;
     }
 
 
