@@ -1,5 +1,4 @@
-import java.util.LinkedList;
-import java.util.ListIterator;
+import account.Refund;
 
 /**
  * test1
@@ -8,9 +7,50 @@ import java.util.ListIterator;
  */
 public class test1 {
 
+    public String getM() {
+        TestClass.TestStr.getStr();
+//        TestClass testClass = new TestClass();
+//        testClass.getAbc();
+        return "abc";
+    }
     public static void main(String[] args) {
 
-        /**/
+        Refund refund = new Refund();
+        refund.setCustomer("레스토랑");
+        refund.setRefund(1000);
+        System.out.println(refund.getRefund());
+        System.out.println(refund.getRefundDate());
+
+//        LocalDate localDate = LocalDate.now();
+//        System.out.println(localDate);
+//
+//        LocalDate startDate = localDate.with(DayOfWeek.THURSDAY).minusWeeks(2);
+//        LocalDate endDate = localDate.with(DayOfWeek.WEDNESDAY).minusWeeks(1);
+//        LocalDate refundDate = localDate.with(DayOfWeek.WEDNESDAY);
+//        System.out.println( startDate );
+//        System.out.println( endDate );
+//        System.out.println( refundDate );
+//        LocalDate nowDate = LocalDate.now();
+//        CalculatorDate startDate = CalculatorDate.START_DATE;
+//        startDate.calculate(nowDate);
+
+//        Calendar c = Calendar.getInstance();
+//        c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+//        System.out.println(c.getTime());
+//        c.set(Calendar.DAY_OF_WEEK, -7);
+//        System.out.println(c.getTime());
+
+//        try {
+//            Class c = Class.forName("java.lang.String");
+//            Method m[] = c.getDeclaredMethods();
+//            for(int i = 0; i < m.length; i++)
+//                System.out.println(m[i].toString());
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+
+//        TestClass.TestStr.getStr();
+        /*/
         int start = 1;
         int end = 10;
         System.out.println(    (start+end)*end/2    );
