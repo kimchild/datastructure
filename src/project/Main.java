@@ -14,7 +14,8 @@ public class Main {
         /**/
         try(Scanner scanner = new Scanner(System.in)) {
             if(scanner.hasNextInt()) {
-                for(int i = 0; i < scanner.nextInt(); i++) {
+                int count = scanner.nextInt();
+                for(int i = 0; i < count; i++) {
                     for(int j = 0; j < i+1; j++) {
                         System.out.print("*");
                     }
