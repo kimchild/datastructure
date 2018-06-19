@@ -2,9 +2,7 @@ package project;
 
 import project.refund.Refund;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -15,12 +13,137 @@ public class Main {
         try(Scanner scanner = new Scanner(System.in)) {
             if(scanner.hasNextInt()) {
                 int count = scanner.nextInt();
+                //좌측정렬 삼각별
+                /**/
                 for(int i = 0; i < count; i++) {
                     for(int j = 0; j < i+1; j++) {
                         System.out.print("*");
                     }
                     System.out.println();
                 }
+                for(int i = 0; i < count; i++) {
+                    for(int j = count; j > i; j--) {
+                        System.out.print("*");
+                    }
+                    System.out.println();
+                }
+                /**/
+
+                //우측정렬 삼각별
+                /**/
+                String aster;
+                for(int i = 0; i < count; i++) {
+                    aster = new String();
+                    for(int j = 0; j < i+1; j++) {
+                        aster += "*";
+                    }
+                    System.out.println( String.format("%"+count+"s",aster) );
+                }
+                for(int i = 0; i < count; i++) {
+                    aster = new String();
+                    for(int j = count; j > i; j--) {
+                        aster += "*";
+                    }
+                    System.out.println( String.format("%"+count+"s",aster) );
+                }
+                /**/
+
+                List<String> list;
+                //피라미드
+                /**/
+                list = new ArrayList<>();
+                for(int i = 0; i < count-1; i++) {
+                    aster = new String();
+                    for(int j = 0; j < i+1; j++) {
+                        aster += "*";
+                    }
+                    list.add(String.format("%"+count+"s",aster));
+                }
+
+                boolean isFirstAster = true;
+                for(String s : list) {
+                    if(isFirstAster) {
+                        isFirstAster = false;
+                        System.out.println(String.format("%"+count+"s","*"));
+                    }
+                    System.out.println(s + s.replaceAll("\\s", ""));
+                }
+                /**/
+
+
+                //역 피라미드
+                /**/
+                list = new ArrayList<>();
+                for(int i = 0; i < count-1; i++) {
+                    aster = new String();
+                    for(int j = 0; j < i+1; j++) {
+                        aster += "*";
+                    }
+                    list.add(String.format("%"+count+"s",aster));
+                }
+
+                Collections.reverse(list);
+                for(String s : list) {
+                    System.out.println(s + s.replaceAll("\\s", ""));
+                }
+                System.out.println(String.format("%"+count+"s","*"));
+                /**/
+
+
+                //다이아몬드
+                /**/
+                list = new ArrayList<>();
+                for(int i = 0; i < count-1; i++) {
+                    aster = new String();
+                    for(int j = 0; j < i+1; j++) {
+                        aster += "*";
+                    }
+                    list.add(String.format("%"+count+"s",aster));
+                }
+
+                isFirstAster = true;
+                for(String s : list) {
+                    if(isFirstAster) {
+                        isFirstAster = false;
+                        System.out.println(String.format("%"+count+"s","*"));
+                    }
+                    System.out.println(s + s.replaceAll("\\s", ""));
+                }
+                Collections.reverse(list);
+                for(String s : list) {
+                    System.out.println(s + s.replaceAll("\\s", ""));
+                }
+                System.out.println(String.format("%"+count+"s","*"));
+                /**/
+
+                //모래시계
+                /**/
+                list = new ArrayList<>();
+                for(int i = 0; i < count-1; i++) {
+                    aster = new String();
+                    for(int j = 0; j < i+1; j++) {
+                        aster += "*";
+                    }
+                    list.add(String.format("%"+count+"s",aster));
+                }
+
+                Collections.reverse(list);
+                for(String s : list) {
+                    System.out.println(s + s.replaceAll("\\s", ""));
+                }
+                System.out.println(String.format("%"+count+"s","*"));
+
+                Collections.sort(list);
+                isFirstAster = true;
+                for(String s : list) {
+                    if(isFirstAster) {
+                        isFirstAster = false;
+                        System.out.println(String.format("%"+count+"s","*"));
+                    }
+                    System.out.println(s + s.replaceAll("\\s", ""));
+                }
+                /**/
+
             } else {
                 System.out.println("숫자만 입력 가능합니다.");
             }
