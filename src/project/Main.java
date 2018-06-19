@@ -1,9 +1,9 @@
 package project;
 
 import project.refund.Refund;
-import project.star.Star;
-import project.star.Triangle;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -14,8 +14,12 @@ public class Main {
         /**/
         try(Scanner scanner = new Scanner(System.in)) {
             if(scanner.hasNextInt()) {
-                Star star = new Triangle();
-                star.draw(scanner.nextInt());
+                for(int i = 0; i < scanner.nextInt(); i++) {
+                    for(int j = 0; j < i+1; j++) {
+                        System.out.print("*");
+                    }
+                    System.out.println();
+                }
             } else {
                 System.out.println("숫자만 입력 가능합니다.");
             }
@@ -28,20 +32,13 @@ public class Main {
         try(Scanner scanner = new Scanner(System.in)) {
             if(scanner.hasNextLine()) {
                 String flipStr = scanner.nextLine();
-                StringBuilder outFlipStr = new StringBuilder();
-                StringBuilder sb = new StringBuilder();
-                for(int i = 0; i < flipStr.length(); i++) {
-                    sb.append(flipStr.charAt(i));
-                    if(flipStr.charAt(i) == ' '
-                            || flipStr.length()-1 == i) {
+                List<String> list = Arrays.asList(flipStr.split(" "));
+                //전체 위치를 뒤집을 경우 reverse
+                //Collections.reverse(list);
 
-                        sb.reverse();
-                        outFlipStr.append(sb);
-                        sb = new StringBuilder();
-                    }
+                for(String s : list) {
+                    System.out.print(new StringBuilder(s).reverse() + " ");
                 }
-
-                System.out.println(outFlipStr);
 
             } else {
                 System.out.println("뒤집을 텍스트를 입력하세요.");
@@ -49,14 +46,15 @@ public class Main {
         }
         /**/
 
-        //환급액 & 환급일 구하기 : 요기요앱에 입점한 레스토랑의 환급액 & 환급일을 계산하는 문제 (50점)
+        //환급액 & 환급일 구하기 : 배달앱에 입점한 식당의 환급액 & 환급일을 계산하는 문제 (50점)
         //수수료 = 5% / 환급액 = 주문금액 - 수수료
         /**/
-        Refund refund = new Refund();
-        refund.setCustomer("레스토랑");
-        refund.setRefund(1000);
-        System.out.println(refund.getCustomer() + "이번주 환급액&환급일");
-        System.out.println(refund.getRefund());
+        Refund refund = new Refund(5);
+        refund.setCustomer("김치찌개전문점");
+        refund.setOrderPrice(1000);
+        System.out.println(refund.getCustomer() + " 이번주 환급액&환급일");
+        System.out.println("환급기간 : " + refund.getStartDate() + " ~ " + refund.getEndDate());
+        System.out.println(refund.getRefundAmount());
         System.out.println(refund.getRefundDate());
         /**/
 
